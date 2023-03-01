@@ -3,20 +3,25 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @user, local: true) do |k| %>    
-      <%= k.label :name %>
-      <%= k.text_field :name %>
+    <%= form_with(model: @user, local: true) do |f| %>  
+      <%= render 'shared/error_messages' %>  
       
-      <%= k.label :email %>
-      <%= k.email_field :email %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control'%>
       
-      <%= k.label :password %>
-      <%= k.password_field :password %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
       
-      <%= k.label :password_confirmation, "Confirmation" %>
-      <%= k.password_field :password_confirmation %>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
       
-      <%= k.submit "Create account", class: "btn btn-primary" %>
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      
+      <%#= f.text_field :meomeo
+      binding.pry%>
+      
+      <%= f.submit "Create account", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

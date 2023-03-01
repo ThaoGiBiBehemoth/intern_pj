@@ -34,7 +34,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $gray-light;
+  color: $gray-light;   // màu sẵn của bootrap
 }
 p {
   font-size: 1.1em;
@@ -62,11 +62,11 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
+  color: $gray-light;    // màu sẵn của bootrap
   a {
     color:  $gray;
     &:hover {
-      color: $gray-darker;
+      color: $gray-darker;   // màu sẵn của bootrap
     }
   }
   small {
@@ -144,4 +144,18 @@ input, textarea, select, .uneditable-input {
 }
 input {
   height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;  // màu sẵn của bootrap
+  }
 }

@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   
   def show
-    @user = User.find(params[:id])
-    # debugger
+    @user = User.find_by(id: params[:id])  # dùng find nếu ko có giá trị -> trả về lỗi, dùng find_by nếu ko có -> nil
+    # binding.pry
+    # debugger = binding.pry || byebug
   end
   
   def new
@@ -10,9 +11,12 @@ class UsersController < ApplicationController
   end
 
   def create
+    # binding.pry
     @user = User.new(user_params)    #hàm băm bảo mật cho ng dùng
     if @user.save
       # Handle a successful save.
+      flash[:success] = "Welcome to the GB App!"
+      redirect_to @user               #~redirect_to user_url(@user)
     else
       render 'new'
     end
