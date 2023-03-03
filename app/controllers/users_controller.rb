@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])  # dùng find nếu ko có giá trị -> trả về lỗi, dùng find_by nếu ko có -> nil
+    @microposts = @user.microposts.paginate(page: params[:page])
     # binding.pry
     # debugger = binding.pry || byebug
   end
@@ -67,15 +68,15 @@ class UsersController < ApplicationController
     end
 
 
-    # Before filters
+    # Before filters   #chuyển qua application do micropost cũng dùng
     # Confirms a signed-in user
-    def signed_in_user   # hoặc có thể dùng if nhưng th này dùng unless logic có vẻ thuận hơn, tt như nhau
-      unless signed_in?
-        store_location
-        flash[:danger] = "Please sign in."
-        redirect_to signin_url
-      end
-    end
+    # def signed_in_user   # hoặc có thể dùng if nhưng th này dùng unless logic có vẻ thuận hơn, tt như nhau
+    #   unless signed_in?
+    #     store_location
+    #     flash[:danger] = "Please sign in."
+    #     redirect_to signin_url
+    #   end
+    # end
 
 
     # Confirms the correct user.

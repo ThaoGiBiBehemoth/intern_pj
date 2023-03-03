@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy   #dependent: :destroy   dùng để huỷ luôn micro khi ng dùng bị huỷ
+
+  
   before_save { email.downcase! }    #  before_save { self.email = email.downcase }
   validates :name, uniqueness: { case_sensitive: true }, length: {maximum: 50}
   validates :email, uniqueness: true, presence: true, length: {maximum: 255}, format: {with: URI::MailTo::EMAIL_REGEXP}  #Thành
