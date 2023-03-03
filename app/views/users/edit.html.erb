@@ -1,0 +1,19 @@
+<% if @user.present?  %>
+  <% provide(:button_text, 'Update') %>
+  <% provide(:title, "Edit user") %>
+  <h1>Update information</h1>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= render 'form' %>
+      <div class="gravatar_edit">
+        <%= gravatar_for @user %>
+        <a href="https://gravatar.com/emails" target="_blank" rel="noopener">change</a>
+      </div>
+    </div>
+  </div>
+
+
+<% else %>
+  <p style="color:red; background-color:pink; padding:10px; box-sizing:border-box; border-radius:4px; border:0.8px red solid"><span style="font-size:26px">&#x2639; </span> User not found! </p>
+<% end %>
+
