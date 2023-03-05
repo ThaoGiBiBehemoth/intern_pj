@@ -1,12 +1,13 @@
-<% if @user.errors.any? %>
+<% if object.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
-      The form contains <%= pluralize(@user.errors.count, "error") %>.  <%# đơn giản pluralize là tạo số nhiều cho từ, cụ thể đây là 1 error, 2 errors %>
+      The form contains <%= pluralize(object.errors.count, "error") %>..  <%# đơn giản pluralize là tạo số nhiều cho từ, cụ thể đây là 1 error, 2 errors %>
     </div>
     <ul>
-      <% @user.errors.full_messages.each do |r| %>
-        <li><%= r %></li>
+      <% object.errors.full_messages.each do |mess| %>
+        <li><%= mess %></li>
       <% end %>
     </ul>
   </div>
+<% else %>
 <% end %>

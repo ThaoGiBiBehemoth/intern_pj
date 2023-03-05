@@ -2,50 +2,50 @@
 
   <% provide(:title, @user.name) %>
   <%# <h1>User's information</h1> %>
-
+  <h1 style="background-color: lightgray; padding:20px; border-radius:8px"><%= @user.name %></h1>
   <div class="row">
     <aside class="col-md-4">
       <section class="user_info">
-        <h1>
-          <%= gravatar_for @user %>
-          <%= @user.name %>
-        </h1>
       </section>
+      <table style="margin: auto auto; line-height: 30px">
+        <tbody>
+          <tr>
+            <th style="min-width:100px"><%= gravatar_for @user %></th>
+            <td><%= @user.name %></td>
+          <tr>
+          <tr>
+            <th>ID</th>
+            <td><%= @user.id %></td>
+          <tr>
+          <tr>
+            <th>Email</th>
+            <td><%= @user.email.first(1)%>***<%= @user.email.last(@user.email.length - @user.email.index("@")) %></td>
+          <tr>
+          <tr>
+            <th>Created_at</th>
+            <td><%= @user.created_at %></td>
+          <tr>
+          <tr>
+            <th>Updated_at</th>
+            <td><%= @user.updated_at %></td>
+          <tr>
+        <tbody>
+      </table>
     </aside>
     <div class="col-md-8">
+      <button style="padding: 10px; margin-top:40px  "><%= link_to "New micropost", new_micropost_path%></button>
       <% if @user.microposts.any? %>
         <h3>Microposts (<%= @user.microposts.count %>)</h3>
         <ol class="microposts">
           <%= render @microposts %>
         </ol>
         <%= will_paginate @microposts %>
+      <% else %>
+        <p style="color:red; font-size: 18px; margin-top:30px">There are no microposts yet</p>
       <% end %>
     </div>
   </div>
-  <table style="margin: auto auto; line-height: 30px">
-    <tbody>
-      <tr>
-        <th style="min-width:150px">ID</th>
-        <td><%= @user.id %></td>
-      <tr>
-      <tr>
-        <th>Name</th>
-        <td><%= @user.name %></td>
-      <tr>
-      <tr>
-        <th>Email</th>
-        <td><%= @user.email.first(1)%>***<%= @user.email.last(@user.email.length - @user.email.index("@")) %></td>
-      <tr>
-      <tr>
-        <th>Created_at</th>
-        <td><%= @user.created_at %></td>
-      <tr>
-      <tr>
-        <th>Updated_at</th>
-        <td><%= @user.updated_at %></td>
-      <tr>
-    <tbody>
-  </table>
+  
 
 
 <% else %>

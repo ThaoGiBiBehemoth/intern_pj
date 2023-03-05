@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def index
     # @users = User.all
     @users = User.paginate(page: params[:page])
+    # render json: @users
   end
 
   def show
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
 
   def create
     # binding.pry
-    @user = User.new(user_params)    #hàm băm bảo mật cho ng dùng
+    @user = User.new(user_params)    #hàm bảo mật cho ng dùng
     if @user.save
       # Handle a successful save.
       sign_in @user
@@ -36,7 +37,8 @@ class UsersController < ApplicationController
 
 
   def edit
-    @user = User.find_by(id: params[:id]) 
+    @user = User.find_by(id: params[:id])
+    # render json: @user
   end
 
   def update

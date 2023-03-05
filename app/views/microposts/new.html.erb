@@ -1,5 +1,13 @@
+<% provide(:title, "New micropost") %>
+<% provide(:button_text, 'Add new micropost') %>
 <h1>New Micropost</h1>
 
-<%= render 'form', micropost: @micropost %>
-
-<%= link_to 'Back', microposts_path %>
+<% if signed_in? %>   
+  <div class="row" style="margin: auto auto ">
+    <section class="micropost_form">
+      <%= render 'shared/micropost_form' %>
+    </section>
+  </div>
+<% else %>
+  <p style="background-color:red; padding: 20px; text-align:center; font-size: 18px">Sorry, you must <%= link_to "sign in" , signin_path %> to perform this operation !!! </p>
+<% end %>

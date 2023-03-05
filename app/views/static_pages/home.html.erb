@@ -1,9 +1,20 @@
-<% provide(:title, "Help") %>
+<% provide(:title, "Home") %>
 <%# <h1>Sample App</h1> %>
 
 <div class="center jumbotron">
-  <h1>Welcome to the Sample App</h1>
-  <h2>This is the home page for the <a href="https://www.railstutorial.org/">Ruby on Rails Tutorial</a> sample application. </h2>
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+<% if signed_in? %>   
+  <h1>Welcome <%= current_user.name %> ♡</h1>
+  <h2>Let's plan a new ✌</h2>
+  <%= link_to "New plan", new_micropost_path, class: "btn btn-lg btn-primary btn-home" %>  
+  <%# <div class="col-md-4">
+    <h3>Micropost Feed</h3>
+    <%= render 'shared/feed' %>
+  <%# </div>  %>
+<% else %>  
+  <h1>Welcome to the GiBi's website</h1>
+  <h2>This is ThaoGiBi's first PJ in Behemoth ^^~</h2>
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary btn-home" %>
+<% end %>
+
 </div>
-<%= link_to image_tag("rails.svg", alt: "Rails logo", width: "200"), "https://rubyonrails.org/" %>
+<%#= link_to image_tag("rails.svg", alt: "Rails logo", width: "200"), "https://rubyonrails.org/" %>

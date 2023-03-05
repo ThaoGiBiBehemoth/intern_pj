@@ -1,3 +1,11 @@
 // Place all the styles related to the Microposts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+form {
+  width: 80%;
+  margin: auto auto;
+  #micropost_content {
+    height: 200px;
+  }
+}
+

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  
   # root 'application#hello'
   root 'static_pages#home'
 
@@ -10,15 +9,15 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pages#contact'
   
   get '/signup', to: 'users#new'
-  get '/new', to: 'users#new'
+  
 
   get '/signin', to:'sessions#new'
   post '/signin', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
+
+  get '/new_micropost', to:'microposts#new'
   
   
-
-
 
   resources :users
   resources :microposts, only: [:create, :destroy]
